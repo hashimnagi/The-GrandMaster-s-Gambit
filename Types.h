@@ -102,7 +102,7 @@ struct Move {
 		type(MoveType::NORMAL) ,
 		notation("") 
 	{
-		//notation meaning like e2 say e4 moves perform karna
+		//notation meaning like e2 say e4 moves perform karta hay
 		notation += char('a' + ftc);
 		notation += char('0' + ( 8 - ftr ));
 		notation += char('a' + ttc);
