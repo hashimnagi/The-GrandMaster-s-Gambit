@@ -65,4 +65,12 @@
 			checkRow += rowStep;
 			checkCol += colStep;
 		}
+	// now we check our destination square
+	//we store the destination address in a pointer
+	Piece* destination = board[finalrow][finalcol];
+	// if destination has the same color piece then also invalid
+		if (destination != nullptr && destination->getColor() == this->getColor())
+			return false;
+
+		return true;
 	}
