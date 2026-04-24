@@ -10,6 +10,6 @@ public:
 	char getSymbol() const;
 
 	//King only moves 1 step in all the directions
-	bool isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) override;
+	bool isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8])const override;
 
 };
