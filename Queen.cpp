@@ -14,7 +14,7 @@
 
 	// Queen moves in all 8 directions any number of squares
 
-	bool Queen::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) override const {
+	bool Queen::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) {
 
 		int rowdifference = abs(finalrow - initialrow);
 		int coldifference = abs(finalcol - initialcol);
