@@ -15,7 +15,7 @@ char King::getSymbol() const {
 
 
 //King only moves 1 step in all the directions
-bool King::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) {
+bool King::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) override {
 
 	//First we calculate how far is king trying to go
 	int rowdifference = abs(finalrow - initialrow);
