@@ -14,7 +14,7 @@ public:
 
 	//Pure Virtual Functions
 
-	virtual bool isValidMove() = 0;
+	virtual bool isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) = 0;
 	virtual char getSymbol() const = 0;
 
     //Getters
