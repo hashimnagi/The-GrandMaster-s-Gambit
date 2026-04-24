@@ -8,7 +8,7 @@ class Piece {
 protected:
 	Color color;
 	PiecesType type;
-	bool HasMoved;
+	bool HasMoved=false;
 public:
 	Piece(Color c, PiecesType T);
 
