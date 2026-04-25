@@ -3,6 +3,7 @@
 
 
 class Queen :public Piece {
+public:
 	//Constructor
 	Queen(Color c);
 
