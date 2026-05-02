@@ -2,7 +2,7 @@
 #include "Piece.h"
 
 class Bishop :public Piece {
-public:
+
 public:
 	//Constructor
 	Bishop(Color c);
@@ -14,3 +14,4 @@ public:
 	bool isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) const override;
 
 };
+
