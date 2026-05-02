@@ -5,7 +5,7 @@
 Bishop::Bishop(Color c) : Piece(c, PiecesType::BISHOP) {};
 
 //Getter for symbol virtual function in piece class
-char Bishop:: getSymbol() const {
+char Bishop::getSymbol() const {
 	if (color == Color::WHITE)
 		return 'B';
 	else
@@ -14,6 +14,9 @@ char Bishop:: getSymbol() const {
 
 // Bishop moves in diagonal lines only
 bool Bishop::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) const {
+
+	if (finalrow < 0 || finalrow >= 8 || finalcol < 0 || finalcol >= 8)
+		return false;
 	// for diagonals the row difference must be equal to coloumns difference
 	int rowdifference = abs(finalrow - initialrow);
 	int coldifference = abs(finalcol - initialcol);
