@@ -14,20 +14,27 @@ char Rook::getSymbol() const {
 
 // Rook moves in straight lines on same row or same coloumn
 bool Rook::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8])const {
+	if (finalrow < 0 || finalrow >= 8 || finalcol < 0 || finalcol >= 8)
+		return false;
+
 	if (initialrow != finalrow && initialcol != finalcol)
 		return false;
 	// for horizontal movement rowStep=0
 	// for vertical movement colStep=0
 
-	int rowStep=0, colStep=0;
+	int rowStep = 0, colStep = 0;
+
 	if (finalrow > initialrow)
 		rowStep = 1;
-	else
+	else if (finalrow < initialrow)
 		rowStep = -1;
+	// else stays 0
+
 	if (finalcol > initialcol)
 		colStep = 1;
-	else
+	else if (finalcol < initialcol)
 		colStep = -1;
+	// else stays 0
 
 	int checkRow = initialrow + rowStep;
 	int checkCol = initialcol + colStep;
