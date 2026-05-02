@@ -2,8 +2,7 @@
 #include<cmath>
 
 
-King::King(Color c):Piece(c,PiecesType::KING) {
-};
+King::King(Color c) :Piece(c, PiecesType::KING) {};
 
 // Capital K is considered for player 1 and small k for player 2
 char King::getSymbol() const {
@@ -15,8 +14,10 @@ char King::getSymbol() const {
 
 
 //King only moves 1 step in all the directions
-bool King::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8])const {
+bool King::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) const {
 
+	if (finalrow < 0 || finalrow >= 8 || finalcol < 0 || finalcol >= 8)
+		return false;
 	//First we calculate how far is king trying to go
 	int rowdifference = abs(finalrow - initialrow);
 	int coldifference = abs(finalcol - initialcol);
