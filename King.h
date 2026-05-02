@@ -13,3 +13,4 @@ public:
 	bool isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8])const override;
 
 };
+
