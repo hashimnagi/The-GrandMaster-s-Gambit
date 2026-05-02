@@ -3,7 +3,7 @@
 
 
 class Queen :public Piece {
-public:
+public: //errror to be corrected on github
 	//Constructor
 	Queen(Color c);
 
@@ -11,5 +11,5 @@ public:
 	char getSymbol() const;
 
 	// Queen moves in all 8 directions any number of squares
-	bool isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) override;
+	bool isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8])const override;
 };
