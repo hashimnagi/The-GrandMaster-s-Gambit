@@ -13,6 +13,9 @@ char Pawn::getSymbol() const {
 // Pawn is the most basic piece, it can move straight 2 in first move then straight 1 in rest but kill diagonal only in 1 forward direction
 bool Pawn::isValidMove(int initialrow, int initialcol, int finalrow, int finalcol, Piece* const board[8][8]) const {
 
+	if (finalrow < 0 || finalrow >= 8 || finalcol < 0 || finalcol >= 8)
+		return false;
+
 	//White moves up so row decreases and black moves down so row decreases
 	int direction;
 	if (color == Color::WHITE)
@@ -55,15 +58,15 @@ bool Pawn::isValidMove(int initialrow, int initialcol, int finalrow, int finalco
 			ok = false;
 
 		return ok;
-}
-	// case 3 attacking diagonally 
-	if (abs(coldifference) == 1 and rowdifference == direction) {
-		//Store address of destination in a pointer
-		//check if diagonal piece is of same color or not
-		Piece* destination = board[finalrow][finalcol];
-		if (destination != nullptr && destination->getColor() == this->getColor())
-			return false;
 	}
+	// case 3 attacking diagonally 
+	if (abs(coldifference) == 1 && rowdifference == direction) {
+		Piece* destination = board[finalrow][finalcol];
 
+		// must have an enemy piece to capture diagonally
+		if (destination != nullptr && destination->getColor() != this->getColor())
+			return true;   // ← valid diagonal capture
+	}
 	return false;
+
 }
