@@ -1,12 +1,7 @@
 // Game.h
-
 #pragma once
-
-// standard library first, alphabetical order
 #include <iostream>
 #include <string>
-
-// then your own headers, alphabetical order
 #include "Board.h"
 #include "FileManager.h"
 #include "Player.h"
