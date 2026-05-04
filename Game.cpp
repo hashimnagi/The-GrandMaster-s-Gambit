@@ -55,7 +55,7 @@ bool Game::isInCheck(Color color) const {
                 continue;
             }
 
-            // check if this opponent piece can attack the king
+            // checking if this opponent piece can attack the king
             if ( p->isValidMove(i , j , kingRow , kingCol , board.getGrid( )) ) {
 
                 return true;
@@ -298,7 +298,7 @@ void Game::start( ) {
     }
 }
 
-// store valid moves in a plain array instead of vector
+// storing valid moves in a plain array instead of vector
 // returns how many valid moves were found
 int Game::getValidMoves(int row , int col , int resultRows[ ] , int resultCols[ ]) const {
     int count = 0;
@@ -332,7 +332,7 @@ int Game::getValidMoves(int row , int col , int resultRows[ ] , int resultCols[ 
 void Game::startGUI( ) {
     Renderer renderer;
 
-    // try to load assets, fallback to console if failed
+    // for to load assets, fallback to console if failed
     if ( renderer.loadAssets( ) == false ) {
         cout << "Failed to load assets. Falling back to console.\n";
         start( );
@@ -366,7 +366,7 @@ void Game::startGUI( ) {
     while ( renderer.isOpen( ) == true && gameOver == false ) {
         pair<int , int> clickedTile;
 
-        // stop if window closed
+        // stops if window closed
         if ( renderer.pollEvents(clickedTile) == false )
             break;
 
@@ -375,7 +375,7 @@ void Game::startGUI( ) {
 
         // only process if a tile was actually clicked
         if ( clickRow != -1 ) {
-            // ── FIRST CLICK: select a piece ──────────────────
+            // ── FIRST CLICK: select a piece 
             if ( pieceSelected == false ) {
                 Piece *p = board.getPiece(clickRow , clickCol);
 
@@ -388,9 +388,9 @@ void Game::startGUI( ) {
                 }
             }
 
-            // ── SECOND CLICK: try to move ─────────────────────
+            // ── SECOND CLICK: try to move 
             else {
-                // clicked same piece again → deselect
+                // clicked same piece again and deselect
                 if ( clickRow == selRow && clickCol == selCol ) {
                     pieceSelected = false;
                     selRow = -1;
@@ -398,7 +398,7 @@ void Game::startGUI( ) {
                     validCount = 0;
                 }
 
-                // clicked another own piece → switch selection
+                // clicked another own piece and switch selection
                 else if ( board.getPiece(clickRow , clickCol) != nullptr &&
                          board.getPiece(clickRow , clickCol)->getColor( ) == currentPlayer->GetColor( ) ) {
                     selRow = clickRow;
@@ -406,9 +406,9 @@ void Game::startGUI( ) {
                     validCount = getValidMoves(selRow , selCol , validRows , validCols);
                 }
 
-                // clicked a destination square → check if valid move
+                // clicked a destination square and check if valid move
                 else {
-                    // search the valid moves array
+                    // searching the valid moves array
                     bool isValid = false;
                     for ( int i = 0; i < validCount; i++ ) {
                         if ( validRows [ i ] == clickRow && validCols [ i ] == clickCol ) {
@@ -417,7 +417,7 @@ void Game::startGUI( ) {
                         }
                     }
 
-                    // valid move → execute it
+                    // valid move and execute it
                     if ( isValid == true ) {
                        // get symbols before move
                         char pieceMoved = board.getPiece(selRow , selCol)->getSymbol( );
@@ -453,12 +453,12 @@ void Game::startGUI( ) {
                         else
                             opponent = Color::WHITE;
 
-                        // check if opponent has no legal moves left
+                        // checking if opponent has no legal moves left
                         if ( hasLegalMoves(opponent) == false ) {
                             // build empty dots vector for final render
                             vector<pair<int , int>> moveDots;
 
-                            // render final board state
+                            // rendering final board state
                             renderer.render(board , -1 , -1 , moveDots ,
                                 player1.GetName( ) , player2.GetName( ) ,
                                 currentPlayer->GetColor( ) ,
@@ -486,20 +486,20 @@ void Game::startGUI( ) {
                         else {
                             switchTurn( );
                         }
-                    }  // ← end of isValid block
+                    }  // end of isValid block
 
-                    // invalid destination → deselect
+                    // invalid destination , deselect
                     else {
                         pieceSelected = false;
                         selRow = -1;
                         selCol = -1;
                         validCount = 0;
                     }
-                }  // ← end of "clicked destination" else
-            }  // ← end of "second click" else
-        }  // ← end of "clickRow != -1" if
+                }  //end of "clicked destination" else
+            }  //end of "second click" else
+        }  //end of "clickRow != -1" if
 
-        // render every frame — build vector from plain arrays
+        // rendering  every frame — build the vector from plain arrays
         vector<pair<int , int>> moveDots;
         for ( int i = 0; i < validCount; i++ )
             moveDots.push_back({ validRows [ i ], validCols [ i ] });
