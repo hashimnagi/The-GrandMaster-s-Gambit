@@ -18,14 +18,14 @@ void Board::intiailize( ) {
 	grid [ 0 ][ 2 ] = new Bishop(Color::BLACK);
 	grid [ 0 ][ 3 ] = new Queen(Color::BLACK);
 	grid [ 0 ][ 4 ] = new King(Color::BLACK);
-	grid [ 0 ][ 5 ] = new Bishop(Color::BLACK);  // ← fixed
-	grid [ 0 ][ 6 ] = new Knight(Color::BLACK);  // ← fixed
+	grid [ 0 ][ 5 ] = new Bishop(Color::BLACK);  
+	grid [ 0 ][ 6 ] = new Knight(Color::BLACK);  
 	grid [ 0 ][ 7 ] = new Rook(Color::BLACK);
 	for ( int i = 0; i < 8; i++ ) {
 		grid [ 1 ][ i ] = new Pawn(Color::BLACK);
 	}
-	//White Pieces ka setup
-
+	
+	//White pieces are setup on the board
 	grid [ 7 ][ 0 ] = new Rook(Color::WHITE);
 	grid [ 7 ][ 1 ] = new Knight(Color::WHITE);
 	grid [ 7 ][ 2 ] = new Bishop(Color::WHITE);
@@ -40,7 +40,7 @@ void Board::intiailize( ) {
 	} 
 }
 
-//Pieces ko apni position pay rakhnay kay lyay getter
+//for making pieces on their own positioin
 
 Piece* Board::getPiece(int row , int col)const {
 	if ( !isInBounds(row , col) ) {
@@ -49,14 +49,14 @@ Piece* Board::getPiece(int row , int col)const {
 	return grid [ row ][ col ];
 }
 
-//Pieces ko unki postion pay place karnay kay lyay
+//for placing the pieces on their own position
 void Board::setPiece(int row , int col , Piece *piece) {
 	if ( isInBounds (row , col ) ) {
 		grid [ row ][ col ] = piece;
 	}
 }
 
-//Pieces ko move karwanay kay lyay from one sq to another
+//for moving pieces from one square to another
 Piece *Board::movePiece(int fromtheRow , int fromtheCol , int totheRow , int totheCol) {
 	Piece *captured = grid [ totheRow ][ totheCol ];
 	grid [ totheRow ][ totheCol ] = grid [ fromtheRow ][ fromtheCol ];
