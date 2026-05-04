@@ -12,7 +12,7 @@ Board::Board( ) {
 }
 
 void Board::intiailize( ) {
-	//Black pieces ka setup
+	//Black pieces are setup on the board
 	grid [ 0 ][ 0 ] = new Rook(Color::BLACK);
 	grid [ 0 ][ 1 ] = new Knight(Color::BLACK);
 	grid [ 0 ][ 2 ] = new Bishop(Color::BLACK);
