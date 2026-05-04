@@ -56,14 +56,14 @@ int Renderer::getTextureIndex(PiecesType type , Color color)const {
 
 
 bool Renderer::loadAssets( ) {
-    // ── Load font ─────────────────────────────────────
+    // ── Loaded font 
     // Uses Windows built-in Arial font
     if ( !font.openFromFile("C:/Windows/Fonts/arial.ttf") ) {
         cout << "ERROR: Could not load font!\n";
         return false;
     }
-        // ── Load piece PNGs ───────────────────────────────
-    // File names match Lichess cburnett set exactly
+        // ── Loaded piece PNGs 
+
     string files [ 12 ] = {
         "assets/peices/w_king_2x.png",   
         "assets/peices/w_queen_2x.png",
@@ -84,7 +84,7 @@ bool Renderer::loadAssets( ) {
             cout << "ERROR: Could not load " << files [ i ] << "\n";
             return false;
         }
-        // Smooth scaling for PNG images
+        // Smoothed scaling for PNG images
         piecesTexture [ i ].setSmooth(true);
     }
     cout << "All assets loaded successfully!\n";
